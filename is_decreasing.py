@@ -5,9 +5,6 @@
 
 def is_decreasing(num_list: list[float]):
     """ Returns true if the given list is strictly decreasing, returns false otherwise. """
-    comparison = num_list.pop(0)
-    for number in num_list:
-        if number >= comparison:
-            return False
-        comparison = number
-    return True
+    if len(num_list) == 2:
+        return num_list[1] < num_list[0]
+    return num_list[1] < num_list[0] and is_decreasing(num_list[1:])
